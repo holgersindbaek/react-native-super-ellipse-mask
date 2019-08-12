@@ -186,7 +186,7 @@
     self.mask.frame = newBounds;
     self.maskView.frame = newBounds;
 
-    [super drawRect:newBounds];
+    [self drawRect:newBounds];
 }
 
 - (void) setFrame:(CGRect)frame {
@@ -195,7 +195,7 @@
   self.mask.frame = frame;
   self.maskView.frame = frame;
 
-  [super drawRect:frame];
+  [self drawRect:frame];
 }
 
 @end

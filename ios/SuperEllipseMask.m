@@ -183,13 +183,13 @@
 - (void)setBounds:(CGRect)newBounds {
     [super setBounds:newBounds];
 
-    [super drawRect:rect];
+    [super drawRect:newBounds];
 }
 
 - (void) setFrame:(CGRect)frame {
   [super setFrame:frame];
 
-  [super drawRect:rect];
+  [super drawRect:frame];
 }
 
 @end

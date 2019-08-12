@@ -23,6 +23,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
+  NSLog(@"initWithFrame");
     if ((self = [super initWithFrame:frame])) {
         coeff = 1.28195;
 
@@ -85,7 +86,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    NSLog(@"drawRect %@", rect);
+    NSLog(@"drawRect");
 
     [super drawRect:rect];
 
@@ -179,9 +180,16 @@
     mask.path = path.CGPath;
 }
 
-// -(void) didAddSubview:(UIView *) subview {
-//   NSLog(@"subview added %@", subview);
-//   [self drawRect: ]
-// }
+- (void)setBounds:(CGRect)newBounds {
+    [super setBounds:newBounds];
+
+    [super drawRect:rect];
+}
+
+- (void) setFrame:(CGRect)frame {
+  [super setFrame:frame];
+
+  [super drawRect:rect];
+}
 
 @end

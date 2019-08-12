@@ -183,11 +183,17 @@
 - (void)setBounds:(CGRect)newBounds {
     [super setBounds:newBounds];
 
+    self.mask.frame = newBounds;
+    self.maskView.frame = newBounds;
+
     [super drawRect:newBounds];
 }
 
 - (void) setFrame:(CGRect)frame {
   [super setFrame:frame];
+
+  self.mask.frame = frame;
+  self.maskView.frame = frame;
 
   [super drawRect:frame];
 }

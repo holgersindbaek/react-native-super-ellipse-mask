@@ -15,9 +15,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/everdrone/react-native-super-ellipse-mask"
+    "url": "https://github.com/holgersindbaek/react-native-super-ellipse-mask"
   },
-  "author": "everdrone",
+  "author": "holgersindbaek",
   "license": "Apple flavored smooth corners for React Native",
   "peerDependencies": {
     "prop-types": "^15.6.1"

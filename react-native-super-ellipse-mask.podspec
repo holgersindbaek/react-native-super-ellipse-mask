@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.name = package[:name]
   s.version = package[:version]
   s.license = { type: "MIT" }
-  s.homepage = "https://github.com/everdrone/react-native-super-ellipse-mask"
+  s.homepage = "https://github.com/holgersindbaek/react-native-super-ellipse-mask"
   s.authors = package[:author]
   s.summary = package[:description]
   s.source = { git: package[:repository][:url] }

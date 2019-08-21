@@ -15,24 +15,24 @@ const SuperEllipseMask = requireNativeComponent(
 
 export default class SuperEllipseMaskView extends Component {
   render() {
-    const { radius, backgroundColor, borderColor, borderWidth, ...rest } = this.props;
+    const { smoothBorderRadius, smoothBorderColor, smoothBorderWidth, backgroundColor, ...rest } = this.props;
 
     wrappedStyle = {};
-    if (borderColor) {
-      wrappedStyle.brdColor = processColor(borderColor);
+    if (smoothBorderColor) {
+      wrappedStyle.brdColor = processColor(smoothBorderColor);
     }
-    if (borderWidth) {
-      wrappedStyle.brdWidth = borderWidth;
+    if (smoothBorderWidth) {
+      wrappedStyle.brdWidth = smoothBorderWidth;
     }
 
     let r = {
-      topLeft: radius,
-      topRight: radius,
-      bottomLeft: radius,
-      bottomRight: radius,
+      topLeft: smoothBorderRadius,
+      topRight: smoothBorderRadius,
+      bottomLeft: smoothBorderRadius,
+      bottomRight: smoothBorderRadius,
     };
-    if (typeof radius == 'object') {
-      r = radius;
+    if (typeof smoothBorderRadius == 'object') {
+      r = smoothBorderRadius;
     }
 
     return <SuperEllipseMask {...rest} {...wrappedStyle} {...r} />;

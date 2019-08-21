@@ -21,9 +21,11 @@ RCT_EXPORT_MODULE();
     return [[SuperEllipseMask alloc] init];
 }
 
-RCT_EXPORT_VIEW_PROPERTY(bckColor, NSNumber)
-RCT_EXPORT_VIEW_PROPERTY(brdColor, NSNumber)
-RCT_EXPORT_VIEW_PROPERTY(brdWidth, CGFloat)
-RCT_EXPORT_VIEW_PROPERTY(brdRadius, CGFloat)
+RCT_EXPORT_VIEW_PROPERTY(topLeft, CGFloat)
+RCT_EXPORT_VIEW_PROPERTY(topRight, CGFloat)
+RCT_EXPORT_VIEW_PROPERTY(bottomRight, CGFloat)
+RCT_EXPORT_VIEW_PROPERTY(bottomLeft, CGFloat)
 
+RCT_EXPORT_VIEW_PROPERTY(brdWidth, CGFloat)
+RCT_EXPORT_VIEW_PROPERTY(brdColor, NSNumber)
 @end

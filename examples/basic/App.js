@@ -10,14 +10,17 @@ const colors = {
 
 export default class App extends Component {
   state = {
-    small: false
+    small: true
   }
   componentDidMount() {
     console.log("componentDidMount")
 
     setTimeout(() => {
-
-    }, 100)
+      this.setState({ small: false })
+    }, 1000)
+    setTimeout(() => {
+      this.setState({ small: true })
+    }, 2000)
   }
 
   render() {
@@ -25,7 +28,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <View style={{ flexDirection: 'row', marginBottom: 20 }}>
-          <SuperEllipseMask style={{ marginRight: 20, width: this.state.small ? 100 : 200, backgroundColor: "blue", height: 160, borderRadius: 40, borderColor: "blue" }}>
+          <SuperEllipseMask radius={40} borderWidth={1} borderColor={"red"} style={{ marginRight: 20, width: this.state.small ? 100 : 200, backgroundColor: "blue", height: 160}}>
             <View style={styles.box}>
               <Text style={styles.welcome}>SuperEllipse</Text>
             </View>

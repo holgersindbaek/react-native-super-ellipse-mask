@@ -5,6 +5,7 @@
 // export default RNSuperEllipseMask;
 
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { requireNativeComponent, processColor } from 'react-native';
 
 const SuperEllipseMask = requireNativeComponent(
@@ -14,33 +15,33 @@ const SuperEllipseMask = requireNativeComponent(
 
 export default class SuperEllipseMaskView extends Component {
   render() {
-    const { style, ...rest } = this.props;
+    const { radius, backgroundColor, borderColor, borderWidth, ...rest } = this.props;
 
     wrappedStyle = {};
-    // manipulate style
-    if (style && style.backgroundColor) {
-      wrappedStyle.bckColor = processColor(style.backgroundColor);
+    if (borderColor) {
+      wrappedStyle.brdColor = processColor(borderColor);
     }
-    if (style && style.borderColor) {
-      wrappedStyle.brdColor = processColor(style.borderColor);
-    }
-    if (style && style.borderWidth) {
-      wrappedStyle.brdWidth = style.borderWidth;
+    if (borderWidth) {
+      wrappedStyle.brdWidth = borderWidth;
     }
 
-    // border radii
-    if (style && style.borderRadius) {
-      wrappedStyle.brdRadius = style.borderRadius;
+    let r = {
+      topLeft: radius,
+      topRight: radius,
+      bottomLeft: radius,
+      bottomRight: radius,
+    };
+    if (typeof radius == 'object') {
+      r = radius;
     }
 
-    const {
-      borderRadius,
-      backgroundColor,
-      borderColor,
-      borderWidth,
-      ...reducedStyle
-    } = style;
-
-    return <SuperEllipseMask {...rest} {...wrappedStyle} {...reducedStyle} />;
+    return <SuperEllipseMask {...rest} {...wrappedStyle} {...r} />;
   }
 }
+
+SuperEllipseMaskView.propTypes = {
+  topLeft: PropTypes.number,
+  topRight: PropTypes.number,
+  bottomRight: PropTypes.number,
+  bottomLeft: PropTypes.number,
+};

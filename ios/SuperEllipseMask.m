@@ -19,8 +19,6 @@
     CAShapeLayer *maskLayer;
     CAShapeLayer *borderLayer;
     UIView *maskView;
-    CGFloat internalBrdWidth;
-    UIColor *internalBrdColor;
 
     CGFloat coeff;
     NSArray *values;
@@ -30,9 +28,6 @@
 {
     if ((self = [super initWithFrame:frame])) {
         coeff = 1.28195;
-
-        internalBrdWidth = [UIScreen mainScreen].scale;
-        internalBrdColor = [UIColor clearColor];
 
         maskLayer = [[CAShapeLayer alloc] init];
         maskLayer.contentsScale = [UIScreen mainScreen].scale;
@@ -49,8 +44,8 @@
         borderLayer.frame = frame;
         borderLayer.opaque = false;
         borderLayer.fillColor = [UIColor clearColor].CGColor;
-        borderLayer.strokeColor = internalBrdColor.CGColor;
-        borderLayer.lineWidth = internalBrdWidth;
+        borderLayer.strokeColor = [RCTConvert UIColor:self.brdColor].CGColor;
+        borderLayer.lineWidth = self.brdWidth * [UIScreen mainScreen].scale;
         [self.layer addSublayer:borderLayer];
 
         // set mask layer
@@ -95,9 +90,10 @@
     UIBezierPath *path = [self drawPath:rect];
 
     maskLayer.path = path.CGPath;
+
+    borderLayer.strokeColor = [RCTConvert UIColor:self.brdColor].CGColor;
+    borderLayer.lineWidth = self.brdWidth * [UIScreen mainScreen].scale;
     borderLayer.path = path.CGPath;
-    borderLayer.strokeColor = internalBrdColor.CGColor;
-    borderLayer.lineWidth = internalBrdWidth;
 }
 
 - (UIBezierPath *)drawPath:(CGRect)rect {
@@ -226,14 +222,6 @@
     x = mTopLeft;
     x = x > shorter ? shorter : x;
     self.topLeft = x / coeff;
-}
-
-- (void)setBrdColor:(NSNumber *)color {
-  internalBrdColor = [RCTConvert UIColor:color];
-}
-
-- (void)setBrdWidth:(CGFloat)width {
-  internalBrdWidth = width * [UIScreen mainScreen].scale;
 }
 
 @end

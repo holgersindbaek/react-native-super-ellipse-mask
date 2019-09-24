@@ -24,6 +24,8 @@
     NSArray *values;
 }
 
+@synthesize brdWidth, brdColor;
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if ((self = [super initWithFrame:frame])) {
@@ -80,6 +82,18 @@
     maskView.frame = newFrame;
 
     [self drawRect:newFrame];
+}
+
+- (void)setBrdWidth:(CGFloat)newBrdWidth {
+    _brdWidth = newBrdWidth;
+
+    [self drawRect:self.frame];
+}
+
+- (void)setBrdColor:(NSNumber *)newBrdColor {
+    _brdColor = newBrdColor;
+
+    [self drawRect:self.frame];
 }
 
 - (void)drawRect:(CGRect)rect {

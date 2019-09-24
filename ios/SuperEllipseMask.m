@@ -85,15 +85,15 @@
 }
 
 - (void)setBrdWidth:(CGFloat)newBrdWidth {
-    _brdWidth = newBrdWidth;
+    brdWidth = newBrdWidth;
 
-    [self drawRect:self.frame];
+    [self setNeedsDisplay];
 }
 
 - (void)setBrdColor:(NSNumber *)newBrdColor {
-    _brdColor = newBrdColor;
+    brdColor = newBrdColor;
 
-    [self drawRect:self.frame];
+    [self setNeedsDisplay];
 }
 
 - (void)drawRect:(CGRect)rect {

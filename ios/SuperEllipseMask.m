@@ -24,7 +24,7 @@
     NSArray *values;
 }
 
-@synthesize brdWidth, brdColor;
+@synthesize brdWidth, brdColor, bckColor;
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -45,7 +45,7 @@
         borderLayer.rasterizationScale = [UIScreen mainScreen].scale * 2;
         borderLayer.frame = frame;
         borderLayer.opaque = false;
-        borderLayer.fillColor = [UIColor clearColor].CGColor;
+        borderLayer.fillColor = [RCTConvert UIColor:self.bckColor].CGColor;
         borderLayer.strokeColor = [RCTConvert UIColor:self.brdColor].CGColor;
         borderLayer.lineWidth = self.brdWidth * [UIScreen mainScreen].scale;
         [self.layer addSublayer:borderLayer];
@@ -96,6 +96,12 @@
     [self setNeedsDisplay];
 }
 
+- (void)setBckColor:(NSNumber *)newBckColor {
+    bckColor = newBckColor;
+
+    [self setNeedsDisplay];
+}
+
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
 
@@ -105,6 +111,7 @@
 
     maskLayer.path = path.CGPath;
 
+    borderLayer.fillColor = [RCTConvert UIColor:self.bckColor].CGColor;
     borderLayer.strokeColor = [RCTConvert UIColor:self.brdColor].CGColor;
     borderLayer.lineWidth = self.brdWidth * [UIScreen mainScreen].scale;
     borderLayer.path = path.CGPath;
